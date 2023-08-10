@@ -27,7 +27,14 @@ import {
 import AppNavigator from './src/Router/Router';
 
 
-function App(){
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import SignIn from './src/Components/Authentication/SignIn/SignIn';
+import SignUp from './src/Components/Authentication/SignUp/SignUp';
+const Stack = createNativeStackNavigator();
+
+
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   // const backgroundStyle = {
@@ -65,12 +72,27 @@ function App(){
     //     </View>
     //   </ScrollView>
     // </SafeAreaView>
-
-    <Suspense fallback={<LoadingFallback />}>
-      <AppNavigator />
-    </Suspense>
+    <SafeAreaView>
+      {/* <Suspense fallback={<LoadingFallback />}> */}
+      {/* <AppNavigator /> */}
+      {/* </Suspense> */}
+      {/* <NavigationContainer>
+        <Stack.Navigator >
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
+      </NavigationContainer> */}
+      <SignIn />
+    </SafeAreaView>
 
   );
+}
+
+
+const LoadingFallback = () => {
+  return (
+    <Text>Lodging...</Text>
+  )
 }
 
 const styles = StyleSheet.create({

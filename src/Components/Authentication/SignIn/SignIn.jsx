@@ -1,9 +1,8 @@
 import React from 'react'
-import { Text } from 'react-native'
-
+import { Container, Content, Form, Item, Input, Button, Text, NativeBaseProvider } from 'native-base';
 const SignIn = () => {
   return (
-    <Text>Sign</Text>
+      <Text style={{ color: 'red' }}>Sign</Text>
   )
 }
 

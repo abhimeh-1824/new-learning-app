@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Form, Item, Input, Button, Text } from 'native-base';
+import { Container, Content, Form, Item, Input, Button, Text, NativeBaseProvider } from 'native-base';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -23,42 +23,45 @@ export default function SignUp() {
         },
     });
     return (
-        <Container>
-            <Content contentContainerStyle={{ flex: 1, justifyContent: 'center', padding: RFValue(20) }}>
-                <Form>
-                    <Item>
-                        <Input
-                            placeholder="Username"
-                            onChangeText={formik.handleChange('username')}
-                            value={formik.values.username}
-                        />
-                    </Item>
-                    {formik.errors.username && <Text>{formik.errors.username}</Text>}
+        <NativeBaseProvider>
+            <Container>
+                <Content contentContainerStyle={{ flex: 1, justifyContent: 'center', padding: RFValue(20) }}>
+                    <Form>
+                        <Item>
+                            <Input
+                                placeholder="Username"
+                                onChangeText={formik.handleChange('username')}
+                                value={formik.values.username}
+                            />
+                        </Item>
+                        {formik.errors.username && <Text>{formik.errors.username}</Text>}
 
-                    <Item>
-                        <Input
-                            placeholder="Email"
-                            onChangeText={formik.handleChange('email')}
-                            value={formik.values.email}
-                        />
-                    </Item>
-                    {formik.errors.email && <Text>{formik.errors.email}</Text>}
+                        <Item>
+                            <Input
+                                placeholder="Email"
+                                onChangeText={formik.handleChange('email')}
+                                value={formik.values.email}
+                            />
+                        </Item>
+                        {formik.errors.email && <Text>{formik.errors.email}</Text>}
 
-                    <Item>
-                        <Input
-                            secureTextEntry
-                            placeholder="Password"
-                            onChangeText={formik.handleChange('password')}
-                            value={formik.values.password}
-                        />
-                    </Item>
-                    {formik.errors.password && <Text>{formik.errors.password}</Text>}
+                        <Item>
+                            <Input
+                                secureTextEntry
+                                placeholder="Password"
+                                onChangeText={formik.handleChange('password')}
+                                value={formik.values.password}
+                            />
+                        </Item>
+                        {formik.errors.password && <Text>{formik.errors.password}</Text>}
 
-                    <Button block onPress={formik.handleSubmit} style={{ marginTop: RFValue(20) }}>
-                        <Text>Sign Up</Text>
-                    </Button>
-                </Form>
-            </Content>
-        </Container>
+                        <Button block onPress={formik.handleSubmit} style={{ marginTop: RFValue(20) }}>
+                            <Text>Sign Up</Text>
+                        </Button>
+                    </Form>
+
+                </Content>
+            </Container>
+        </NativeBaseProvider>
     )
 }
